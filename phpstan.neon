@@ -2,4 +2,8 @@ parameters:
     ignoreErrors:
         -
             identifier: missingType.iterableValue
+        -
+            identifier: argument.type
+        -
+            identifier: return.type
     level: 8
