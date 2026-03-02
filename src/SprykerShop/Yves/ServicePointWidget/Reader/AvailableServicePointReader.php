@@ -26,9 +26,6 @@ class AvailableServicePointReader implements AvailableServicePointReaderInterfac
      */
     protected ServicePointWidgetToServicePointStorageClientInterface $servicePointStorageClient;
 
-    /**
-     * @param \SprykerShop\Yves\ServicePointWidget\Dependency\Client\ServicePointWidgetToServicePointStorageClientInterface $servicePointStorageClient
-     */
     public function __construct(
         ServicePointWidgetToServicePointStorageClientInterface $servicePointStorageClient
     ) {
@@ -80,12 +77,6 @@ class AvailableServicePointReader implements AvailableServicePointReaderInterfac
         return $indexedServicePoints;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ServicePointStorageTransfer $servicePointStorageTransfer
-     * @param \Generated\Shared\Transfer\ServicePointTransfer $servicePointTransfer
-     *
-     * @return \Generated\Shared\Transfer\ServicePointTransfer
-     */
     protected function mapServicePointStorageTransferToServicePointTransfer(
         ServicePointStorageTransfer $servicePointStorageTransfer,
         ServicePointTransfer $servicePointTransfer

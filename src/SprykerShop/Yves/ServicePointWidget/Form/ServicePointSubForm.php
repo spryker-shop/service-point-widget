@@ -25,11 +25,6 @@ class ServicePointSubForm extends AbstractType
      */
     public const FIELD_SERVICE_POINT_UUID = 'uuid';
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         parent::configureOptions($resolver);

@@ -39,11 +39,6 @@ class ServicePointWidgetDependencyProvider extends AbstractBundleDependencyProvi
      */
     protected const SERVICE_TWIG = 'twig';
 
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
-     */
     public function provideDependencies(Container $container): Container
     {
         $container = parent::provideDependencies($container);
@@ -55,11 +50,6 @@ class ServicePointWidgetDependencyProvider extends AbstractBundleDependencyProvi
         return $container;
     }
 
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
-     */
     protected function addServicePointSearchClient(Container $container): Container
     {
         $container->set(static::CLIENT_SERVICE_POINT_SEARCH, function (Container $container) {
@@ -71,11 +61,6 @@ class ServicePointWidgetDependencyProvider extends AbstractBundleDependencyProvi
         return $container;
     }
 
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
-     */
     protected function addServicePointStorageClient(Container $container): Container
     {
         $container->set(static::CLIENT_SERVICE_POINT_STORAGE, function (Container $container) {
@@ -85,11 +70,6 @@ class ServicePointWidgetDependencyProvider extends AbstractBundleDependencyProvi
         return $container;
     }
 
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
-     */
     protected function addTwigService(Container $container): Container
     {
         $container->set(static::TWIG_ENVIRONMENT, function (Container $container) {

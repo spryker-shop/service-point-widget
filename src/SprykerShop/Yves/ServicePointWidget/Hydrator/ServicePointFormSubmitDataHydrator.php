@@ -35,11 +35,6 @@ class ServicePointFormSubmitDataHydrator implements ServicePointFormSubmitDataHy
      */
     protected AddressFormCheckerInterface $addressFormChecker;
 
-    /**
-     * @param \SprykerShop\Yves\ServicePointWidget\Reader\AvailableServicePointReaderInterface $availableServicePointReader
-     * @param \SprykerShop\Yves\ServicePointWidget\Validator\ServicePointFormValidatorInterface $servicePointFormValidator
-     * @param \SprykerShop\Yves\ServicePointWidget\Checker\AddressFormCheckerInterface $addressFormChecker
-     */
     public function __construct(
         AvailableServicePointReaderInterface $availableServicePointReader,
         ServicePointFormValidatorInterface $servicePointFormValidator,
@@ -50,11 +45,6 @@ class ServicePointFormSubmitDataHydrator implements ServicePointFormSubmitDataHy
         $this->addressFormChecker = $addressFormChecker;
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormEvent $event
-     *
-     * @return void
-     */
     public function hydrate(FormEvent $event): void
     {
         /** @var \Generated\Shared\Transfer\QuoteTransfer|\Generated\Shared\Transfer\ItemTransfer|\Spryker\Shared\Kernel\Transfer\AbstractTransfer $data */
@@ -77,13 +67,6 @@ class ServicePointFormSubmitDataHydrator implements ServicePointFormSubmitDataHy
         $this->hydrateServicePointToItem($data, $form, $event);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Symfony\Component\Form\FormInterface $form
-     * @param \Symfony\Component\Form\FormEvent $event
-     *
-     * @return void
-     */
     protected function hydrateServicePointsToQuote(QuoteTransfer $quoteTransfer, FormInterface $form, FormEvent $event): void
     {
         $servicePointTransfers = $this->availableServicePointReader->getServicePoints(
@@ -132,13 +115,6 @@ class ServicePointFormSubmitDataHydrator implements ServicePointFormSubmitDataHy
         return array_filter(array_unique($servicePointUuids));
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param \Symfony\Component\Form\FormInterface $form
-     * @param \Symfony\Component\Form\FormEvent $event
-     *
-     * @return void
-     */
     protected function hydrateServicePointToItem(ItemTransfer $itemTransfer, FormInterface $form, FormEvent $event): void
     {
         if (!$this->addressFormChecker->isDeliverToMultipleAddresses($form)) {
@@ -157,12 +133,6 @@ class ServicePointFormSubmitDataHydrator implements ServicePointFormSubmitDataHy
         $event->setData($itemTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\ServicePointTransfer|null $servicePointTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     protected function setServicePointsToQuoteLevel(
         QuoteTransfer $quoteTransfer,
         ?ServicePointTransfer $servicePointTransfer

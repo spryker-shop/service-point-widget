@@ -23,19 +23,11 @@ class ServicePointFormPreSetDataHydrator implements ServicePointFormPreSetDataHy
      */
     protected AddressFormCheckerInterface $addressFormChecker;
 
-    /**
-     * @param \SprykerShop\Yves\ServicePointWidget\Checker\AddressFormCheckerInterface $addressFormChecker
-     */
     public function __construct(AddressFormCheckerInterface $addressFormChecker)
     {
         $this->addressFormChecker = $addressFormChecker;
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormEvent $event
-     *
-     * @return void
-     */
     public function hydrate(FormEvent $event): void
     {
         /** @var \Generated\Shared\Transfer\QuoteTransfer|\Generated\Shared\Transfer\ItemTransfer|null $data */
@@ -54,11 +46,6 @@ class ServicePointFormPreSetDataHydrator implements ServicePointFormPreSetDataHy
         ]);
     }
 
-    /**
-     * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer|null $data
-     *
-     * @return \Generated\Shared\Transfer\ServicePointTransfer|null
-     */
     protected function getSelectedServicePoint(?AbstractTransfer $data): ?ServicePointTransfer
     {
         if ($data instanceof QuoteTransfer && $this->isItemsHaveSameServicePoint($data)) {
@@ -75,11 +62,6 @@ class ServicePointFormPreSetDataHydrator implements ServicePointFormPreSetDataHy
         return null;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     protected function isItemsHaveSameServicePoint(QuoteTransfer $quoteTransfer): bool
     {
         $servicePointUuids = [];

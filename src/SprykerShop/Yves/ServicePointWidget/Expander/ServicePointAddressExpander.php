@@ -18,11 +18,6 @@ use Symfony\Component\Form\FormEvents;
 
 class ServicePointAddressExpander implements ServicePointAddressExpanderInterface
 {
-    /**
-     * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     *
-     * @return \Symfony\Component\Form\FormBuilderInterface
-     */
     public function expandShipmentsWithServicePointAddress(FormBuilderInterface $builder): FormBuilderInterface
     {
         $builder->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event): void {
@@ -32,11 +27,6 @@ class ServicePointAddressExpander implements ServicePointAddressExpanderInterfac
         return $builder;
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormEvent $event
-     *
-     * @return void
-     */
     protected function hydrateServicePointAddressToShipmentDeliveryAddress(FormEvent $event): void
     {
         /** @var \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer */
@@ -72,12 +62,6 @@ class ServicePointAddressExpander implements ServicePointAddressExpanderInterfac
         return $abstractTransfer instanceof QuoteTransfer && $abstractTransfer->getCustomer();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     * @param \Generated\Shared\Transfer\ServicePointTransfer $servicePointTransfer
-     *
-     * @return \Generated\Shared\Transfer\AddressTransfer
-     */
     protected function createAddressTransfer(
         CustomerTransfer $customerTransfer,
         ServicePointTransfer $servicePointTransfer

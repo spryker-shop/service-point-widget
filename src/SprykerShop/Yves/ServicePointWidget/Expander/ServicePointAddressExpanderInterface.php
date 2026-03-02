@@ -11,10 +11,5 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 interface ServicePointAddressExpanderInterface
 {
-    /**
-     * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     *
-     * @return \Symfony\Component\Form\FormBuilderInterface
-     */
     public function expandShipmentsWithServicePointAddress(FormBuilderInterface $builder): FormBuilderInterface;
 }

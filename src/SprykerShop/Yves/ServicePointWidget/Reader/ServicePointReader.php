@@ -79,10 +79,6 @@ class ServicePointReader implements ServicePointReaderInterface
      */
     protected Environment $twigEnvironment;
 
-    /**
-     * @param \SprykerShop\Yves\ServicePointWidget\Dependency\Client\ServicePointWidgetToServicePointSearchClientInterface $servicePointSearchClient
-     * @param \Twig\Environment $twigEnvironment
-     */
     public function __construct(
         ServicePointWidgetToServicePointSearchClientInterface $servicePointSearchClient,
         Environment $twigEnvironment
@@ -91,11 +87,6 @@ class ServicePointReader implements ServicePointReaderInterface
         $this->twigEnvironment = $twigEnvironment;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ServicePointSearchRequestTransfer $servicePointSearchRequestTransfer
-     *
-     * @return string
-     */
     public function searchServicePoints(ServicePointSearchRequestTransfer $servicePointSearchRequestTransfer): string
     {
         $searchResults = $this->servicePointSearchClient->searchServicePoints($servicePointSearchRequestTransfer);

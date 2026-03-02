@@ -11,10 +11,5 @@ use Symfony\Component\Form\FormEvent;
 
 interface ServicePointFormPreSetDataHydratorInterface
 {
-    /**
-     * @param \Symfony\Component\Form\FormEvent $event
-     *
-     * @return void
-     */
     public function hydrate(FormEvent $event): void;
 }

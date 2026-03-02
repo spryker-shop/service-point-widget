@@ -12,11 +12,6 @@ use Generated\Shared\Transfer\ServicePointStorageCriteriaTransfer;
 
 interface ServicePointWidgetToServicePointStorageClientInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ServicePointStorageCriteriaTransfer $servicePointStorageCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\ServicePointStorageCollectionTransfer
-     */
     public function getServicePointStorageCollection(
         ServicePointStorageCriteriaTransfer $servicePointStorageCriteriaTransfer
     ): ServicePointStorageCollectionTransfer;

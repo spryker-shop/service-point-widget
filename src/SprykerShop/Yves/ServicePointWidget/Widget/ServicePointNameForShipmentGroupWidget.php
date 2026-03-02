@@ -17,35 +17,21 @@ class ServicePointNameForShipmentGroupWidget extends AbstractWidget
      */
     protected const PARAMETER_SERVICE_POINT_NAME = 'servicePointName';
 
-    /**
-     * @param \Generated\Shared\Transfer\ShipmentGroupTransfer $shipmentGroupTransfer
-     */
     public function __construct(ShipmentGroupTransfer $shipmentGroupTransfer)
     {
         $this->addServicePointNameParameter($shipmentGroupTransfer);
     }
 
-    /**
-     * @return string
-     */
     public static function getName(): string
     {
         return 'ServicePointNameForShipmentGroupWidget';
     }
 
-    /**
-     * @return string
-     */
     public static function getTemplate(): string
     {
         return '@ServicePointWidget/views/service-point-name-for-shipment-group/service-point-name-for-shipment-group.twig';
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShipmentGroupTransfer $shipmentGroupTransfer
-     *
-     * @return void
-     */
     protected function addServicePointNameParameter(ShipmentGroupTransfer $shipmentGroupTransfer): void
     {
         $servicePointName = '';

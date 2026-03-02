@@ -89,16 +89,6 @@ class ServicePointSearchWidget extends AbstractWidget
      */
     protected const ROUTE_NAME_SEARCH = 'service-point-widget/search';
 
-    /**
-     * @param string|null $serviceTypeKey
-     * @param string|null $serviceTypeUuid
-     * @param string|null $shipmentTypeUuid
-     * @param array $itemGroupKeys
-     * @param int|null $searchResultLimit
-     * @param bool $isInitialRenderEnabled
-     * @param array $itemTransfers
-     * @param string $searchRoute
-     */
     public function __construct(
         ?string $serviceTypeKey = null,
         ?string $serviceTypeUuid = null,
@@ -154,11 +144,6 @@ class ServicePointSearchWidget extends AbstractWidget
         return '@ServicePointWidget/views/service-point-search/service-point-search.twig';
     }
 
-    /**
-     * @param int $searchResultLimit
-     *
-     * @return void
-     */
     protected function addSearchResultLimitParameter(int $searchResultLimit): void
     {
         $this->addParameter(static::PARAMETER_SEARCH_RESULT_LIMIT, $searchResultLimit);
@@ -198,41 +183,21 @@ class ServicePointSearchWidget extends AbstractWidget
         );
     }
 
-   /**
-    * @param string $searchRoute
-    *
-    * @return void
-    */
     protected function addSearchRouteParameter(string $searchRoute): void
     {
         $this->addParameter(static::PARAMETER_SEARCH_ROUTE, $searchRoute);
     }
 
-    /**
-     * @param string|null $serviceTypeKey
-     *
-     * @return void
-     */
     protected function addServiceTypeKeyParameter(?string $serviceTypeKey = null): void
     {
         $this->addParameter(static::PARAMETER_SERVICE_TYPE_KEY, $serviceTypeKey);
     }
 
-    /**
-     * @param string|null $serviceTypeUuid
-     *
-     * @return void
-     */
     protected function addServiceTypeUuidParameter(?string $serviceTypeUuid = null): void
     {
         $this->addParameter(static::PARAMETER_SERVICE_TYPE_UUID, $serviceTypeUuid);
     }
 
-    /**
-     * @param string|null $shipmentTypeUuid
-     *
-     * @return void
-     */
     protected function addShipmentTypeUuidParameter(?string $shipmentTypeUuid = null): void
     {
         $this->addParameter(static::PARAMETER_SHIPMENT_TYPE_UUID, $shipmentTypeUuid);

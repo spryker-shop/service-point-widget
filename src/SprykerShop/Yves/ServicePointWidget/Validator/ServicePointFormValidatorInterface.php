@@ -12,11 +12,5 @@ use Symfony\Component\Form\FormInterface;
 
 interface ServicePointFormValidatorInterface
 {
-    /**
-     * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer $data
-     * @param \Symfony\Component\Form\FormInterface $form
-     *
-     * @return void
-     */
     public function validateSubmittedData(AbstractTransfer $data, FormInterface $form): void;
 }

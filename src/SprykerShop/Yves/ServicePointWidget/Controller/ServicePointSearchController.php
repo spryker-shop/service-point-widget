@@ -68,11 +68,6 @@ class ServicePointSearchController extends AbstractController
      */
     protected const PARAMETER_SEARCH_STRING = 'searchString';
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
     public function indexAction(Request $request): Response
     {
         $servicePointSearchRequestTransfer = $this->createServicePointSearchRequestTransfer($request);
@@ -84,11 +79,6 @@ class ServicePointSearchController extends AbstractController
         return new Response($searchResults);
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Generated\Shared\Transfer\ServicePointSearchRequestTransfer
-     */
     protected function createServicePointSearchRequestTransfer(Request $request): ServicePointSearchRequestTransfer
     {
         $requestParameters = [

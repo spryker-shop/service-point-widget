@@ -57,18 +57,10 @@ class AddressFormChecker implements AddressFormCheckerInterface
      */
     protected const VALUE_DELIVER_TO_MULTIPLE_ADDRESSES = '-1';
 
-    /**
-     * @param \SprykerShop\Yves\ServicePointWidget\ServicePointWidgetConfig $servicePointWidgetConfig
-     */
     public function __construct(protected ServicePointWidgetConfig $servicePointWidgetConfig)
     {
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormInterface $form
-     *
-     * @return bool
-     */
     public function isDeliverToMultipleAddresses(FormInterface $form): bool
     {
         $shippingAddressForm = $this->findShippingAddressForm($form);
@@ -84,11 +76,6 @@ class AddressFormChecker implements AddressFormCheckerInterface
         return $shippingAddressForm->get(static::FIELD_ID_CUSTOMER_ADDRESS)->getData() == static::VALUE_DELIVER_TO_MULTIPLE_ADDRESSES;
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormInterface $form
-     *
-     * @return bool
-     */
     public function isShipmentTypeDelivery(FormInterface $form): bool
     {
         $shipmentTypeForm = $this->findShipmentTypeForm($form);
@@ -102,11 +89,6 @@ class AddressFormChecker implements AddressFormCheckerInterface
         return in_array($shipmentTypeKey, $this->servicePointWidgetConfig->getDeliveryShipmentTypeKeys(), true);
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormInterface $form
-     *
-     * @return bool
-     */
     public function hasShipmentTypes(FormInterface $form): bool
     {
         $shipmentTypeForm = $this->findShipmentTypeForm($form);
@@ -118,11 +100,6 @@ class AddressFormChecker implements AddressFormCheckerInterface
         return true;
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormInterface $form
-     *
-     * @return bool
-     */
     public function isBillingAddressTheSameAsShipping(FormInterface $form): bool
     {
         $parentForm = $form->getRoot();
@@ -137,32 +114,17 @@ class AddressFormChecker implements AddressFormCheckerInterface
         return true;
     }
 
-    /**
-     * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer|null $data
-     *
-     * @return bool
-     */
     public function isApplicableForServicePointAddressStepFormHydration(?AbstractTransfer $data): bool
     {
         return $data instanceof QuoteTransfer
             || $data instanceof ItemTransfer && $this->checkNotApplicableServicePointAddressStepFormItemPropertiesForHydration($data);
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormInterface $form
-     *
-     * @return \Symfony\Component\Form\FormInterface|null
-     */
     protected function findShipmentTypeForm(FormInterface $form): ?FormInterface
     {
         return $form->has(static::FIELD_SHIPMENT_TYPE) ? $form->get(static::FIELD_SHIPMENT_TYPE) : null;
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormInterface $form
-     *
-     * @return \Symfony\Component\Form\FormInterface|null
-     */
     protected function findShippingAddressForm(FormInterface $form): ?FormInterface
     {
         $parentForm = $form->getRoot();
@@ -174,11 +136,6 @@ class AddressFormChecker implements AddressFormCheckerInterface
         return null;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     *
-     * @return bool
-     */
     protected function checkNotApplicableServicePointAddressStepFormItemPropertiesForHydration(ItemTransfer $itemTransfer): bool
     {
         foreach ($this->servicePointWidgetConfig->getNotApplicableServicePointAddressStepFormItemPropertiesForHydration() as $notApplicableItemProperty) {

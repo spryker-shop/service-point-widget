@@ -33,9 +33,6 @@ use Twig\Environment;
  */
 class ServicePointWidgetFactory extends AbstractFactory
 {
-    /**
-     * @return \SprykerShop\Yves\ServicePointWidget\Reader\ServicePointReaderInterface
-     */
     public function createServicePointReader(): ServicePointReaderInterface
     {
         return new ServicePointReader(
@@ -44,17 +41,11 @@ class ServicePointWidgetFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Symfony\Component\Form\FormTypeInterface
-     */
     public function createServicePointAddressStepForm(): FormTypeInterface
     {
         return new ServicePointAddressStepForm();
     }
 
-    /**
-     * @return \SprykerShop\Yves\ServicePointWidget\Hydrator\ServicePointFormPreSetDataHydratorInterface
-     */
     public function createServicePointFormPreSetDataHydrator(): ServicePointFormPreSetDataHydratorInterface
     {
         return new ServicePointFormPreSetDataHydrator(
@@ -62,9 +53,6 @@ class ServicePointWidgetFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \SprykerShop\Yves\ServicePointWidget\Hydrator\ServicePointFormSubmitDataHydratorInterface
-     */
     public function createServicePointFormSubmitDataHydrator(): ServicePointFormSubmitDataHydratorInterface
     {
         return new ServicePointFormSubmitDataHydrator(
@@ -74,17 +62,11 @@ class ServicePointWidgetFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \SprykerShop\Yves\ServicePointWidget\Expander\ServicePointAddressExpanderInterface
-     */
     public function createServicePointAddressExpander(): ServicePointAddressExpanderInterface
     {
         return new ServicePointAddressExpander();
     }
 
-    /**
-     * @return \SprykerShop\Yves\ServicePointWidget\Validator\ServicePointFormValidatorInterface
-     */
     public function createServicePointFormValidator(): ServicePointFormValidatorInterface
     {
         return new ServicePointFormValidator(
@@ -92,9 +74,6 @@ class ServicePointWidgetFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \SprykerShop\Yves\ServicePointWidget\Checker\AddressFormCheckerInterface
-     */
     public function createAddressFormChecker(): AddressFormCheckerInterface
     {
         return new AddressFormChecker(
@@ -102,9 +81,6 @@ class ServicePointWidgetFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \SprykerShop\Yves\ServicePointWidget\Reader\AvailableServicePointReaderInterface
-     */
     public function createAvailableServicePointReader(): AvailableServicePointReaderInterface
     {
         return new AvailableServicePointReader(
@@ -112,25 +88,16 @@ class ServicePointWidgetFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \SprykerShop\Yves\ServicePointWidget\Dependency\Client\ServicePointWidgetToServicePointStorageClientInterface
-     */
     public function getServicePointStorageClient(): ServicePointWidgetToServicePointStorageClientInterface
     {
         return $this->getProvidedDependency(ServicePointWidgetDependencyProvider::CLIENT_SERVICE_POINT_STORAGE);
     }
 
-    /**
-     * @return \SprykerShop\Yves\ServicePointWidget\Dependency\Client\ServicePointWidgetToServicePointSearchClientInterface
-     */
     public function getServicePointSearchClient(): ServicePointWidgetToServicePointSearchClientInterface
     {
         return $this->getProvidedDependency(ServicePointWidgetDependencyProvider::CLIENT_SERVICE_POINT_SEARCH);
     }
 
-    /**
-     * @return \Twig\Environment
-     */
     public function getTwigEnvironment(): Environment
     {
         return $this->getProvidedDependency(ServicePointWidgetDependencyProvider::TWIG_ENVIRONMENT);

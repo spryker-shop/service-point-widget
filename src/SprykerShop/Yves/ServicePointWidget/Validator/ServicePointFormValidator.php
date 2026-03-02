@@ -40,32 +40,17 @@ class ServicePointFormValidator implements ServicePointFormValidatorInterface
      */
     protected AddressFormCheckerInterface $addressFormChecker;
 
-    /**
-     * @param \SprykerShop\Yves\ServicePointWidget\Checker\AddressFormCheckerInterface $addressFormChecker
-     */
     public function __construct(AddressFormCheckerInterface $addressFormChecker)
     {
         $this->addressFormChecker = $addressFormChecker;
     }
 
-    /**
-     * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer $data
-     * @param \Symfony\Component\Form\FormInterface $form
-     *
-     * @return void
-     */
     public function validateSubmittedData(AbstractTransfer $data, FormInterface $form): void
     {
         $this->assertServicePointSelection($data, $form);
         $this->assertBillingAddress($data, $form);
     }
 
-    /**
-     * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer $data
-     * @param \Symfony\Component\Form\FormInterface $form
-     *
-     * @return void
-     */
     protected function assertServicePointSelection(AbstractTransfer $data, FormInterface $form): void
     {
         if (!$this->addressFormChecker->hasShipmentTypes($form)) {
@@ -89,12 +74,6 @@ class ServicePointFormValidator implements ServicePointFormValidatorInterface
             ->addError(new FormError(static::GLOSSARY_KEY_SERVICE_POINT_NOT_SELECTED));
     }
 
-    /**
-     * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer $data
-     * @param \Symfony\Component\Form\FormInterface $form
-     *
-     * @return void
-     */
     protected function assertBillingAddress(AbstractTransfer $data, FormInterface $form): void
     {
         if ($data instanceof ItemTransfer || !$this->checkCorrespondenceOfSubmittedData($data, $form)) {
@@ -114,12 +93,6 @@ class ServicePointFormValidator implements ServicePointFormValidatorInterface
             ->addError(new FormError(static::GLOSSARY_KEY_BILLING_ADDRESS_NOT_PROVIDED));
     }
 
-    /**
-     * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer $data
-     * @param \Symfony\Component\Form\FormInterface $form
-     *
-     * @return bool
-     */
     protected function checkCorrespondenceOfSubmittedData(AbstractTransfer $data, FormInterface $form): bool
     {
         return $data instanceof QuoteTransfer && !$this->addressFormChecker->isDeliverToMultipleAddresses($form)
