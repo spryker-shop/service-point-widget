@@ -32,7 +32,7 @@
     {% set providerClassName = config.jsName ~ '__ajax-provider' %}
 
     {% block search %}
-        <div class="{{ config.name }}__search">
+        <div class="{{ config.name }}__search" {{ qa('ssp-service-point-finder-input') }}>
             {% block searchField %}
                 <input placeholder="{{ data.placeholder }}"
                        class="{{ config.name }}__search-field {{ config.name }}__search-field--expand {{ config.jsName }}__search-field"

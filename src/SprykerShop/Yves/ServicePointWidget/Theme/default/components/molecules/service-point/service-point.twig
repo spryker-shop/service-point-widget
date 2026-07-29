@@ -38,6 +38,7 @@
     {% endblock %}
 
     {% set disabledButtonClass = 'all_items_not_available' in data.availabilityGlossaryKey ? 'button--disabled' %}
+    {% set dataQa = 'all_items_not_available' not in data.availabilityGlossaryKey ? 'available-service-point' : 'unavailable-service-point' %}
     {% set partiallyAvailableAttribute = 'some_items_not_available' in data.availabilityGlossaryKey ? 'data-service-point-partially-available' %}
 
     {% block actions %}
@@ -49,6 +50,7 @@
                     class="button {{ config.jsName }}__select-button {{ disabledButtonClass }}"
                     data-service-point-uuid="{{ data.servicePoint.uuid }}"
                     data-service-point-address="{{ address }}"
+                    data-qa="{{ dataQa }}"
                     data-service-point-product-offer-availability="{{
                         data.productOfferAvailabilityDataPerServicePoint is iterable
                             ? data.productOfferAvailabilityDataPerServicePoint
