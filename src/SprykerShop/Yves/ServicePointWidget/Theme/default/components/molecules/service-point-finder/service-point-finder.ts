@@ -26,8 +26,6 @@ export default class ServicePointFinder extends Component {
     protected ajaxProvider: AjaxProvider;
     protected currentSearchValue: string;
 
-    protected readyCallback(): void {}
-
     protected init(): void {
         this.searchInput = <HTMLInputElement>this.getElementsByClassName(`${this.jsName}__search-field`)[0];
         this.container = <HTMLInputElement>this.getElementsByClassName(`${this.jsName}__service-points`)[0];

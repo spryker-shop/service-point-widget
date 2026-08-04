@@ -1,7 +1,14 @@
+@use 'sass:meta';
+@use 'sass:map';
+
 @mixin service-point-widget-service-point($name: '.service-point') {
     #{$name} {
-        padding: map-get($setting-spacing, big) 1.5rem;
+        padding: map.get($setting-spacing, big) 1.5rem;
         flex-shrink: 0;
+
+        @if meta.mixin-exists(service-point-widget-service-point-base-hook) {
+            @include service-point-widget-service-point-base-hook;
+        }
 
         &:hover,
         &--highlighted {
@@ -14,11 +21,11 @@
 
         &__name {
             @include helper-font-size(big);
-            margin-bottom: map-get($setting-spacing, small);
+            margin-bottom: map.get($setting-spacing, small);
         }
 
         &__address {
-            margin-bottom: map-get($setting-spacing, default);
+            margin-bottom: map.get($setting-spacing, default);
         }
 
         @content;

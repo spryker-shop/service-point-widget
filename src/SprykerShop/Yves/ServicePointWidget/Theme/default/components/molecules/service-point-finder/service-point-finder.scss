@@ -1,12 +1,19 @@
+@use 'sass:meta';
+@use 'sass:map';
+
 @mixin service-point-widget-service-point-finder($name: '.service-point-finder') {
     #{$name} {
         display: flex;
         flex-direction: column;
         width: 100%;
 
+        @if meta.mixin-exists(service-point-widget-service-point-finder-base-hook) {
+            @include service-point-widget-service-point-finder-base-hook;
+        }
+
         &__search {
             position: relative;
-            margin: 0 1.5rem map-get($setting-spacing, default);
+            margin: 0 1.5rem map.get($setting-spacing, default);
         }
 
         @include shop-ui-input(#{$name}__search-field) {
@@ -21,8 +28,8 @@
 
         &__icon {
             position: absolute;
-            top: map-get($setting-spacing, default);
-            left: map-get($setting-spacing, default);
+            top: map.get($setting-spacing, default);
+            left: map.get($setting-spacing, default);
             color: $setting-color-darker;
         }
 
