@@ -20,7 +20,7 @@ class ServicePointAddressExpander implements ServicePointAddressExpanderInterfac
 {
     public function expandShipmentsWithServicePointAddress(FormBuilderInterface $builder): FormBuilderInterface
     {
-        $builder->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event): void {
+        $builder->addEventListener(FormEvents::SUBMIT, function (FormEvent $event): void {
             $this->hydrateServicePointAddressToShipmentDeliveryAddress($event);
         });
 
